@@ -1,0 +1,4 @@
+{
+  "/exhibitions": "/exhibitions?_embed=tickets",
+  "/exhibitions/*": "/exhibitions/$1?_embed=tickets"
+}
