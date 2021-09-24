@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react"
+import { Route, Switch } from "react-router-dom"
+import List from "./components/List"
+import View from "./components/View"
 
 function Exhibitions() {
   const [exhibitions, setExhibitions] = useState(null)
@@ -17,7 +20,16 @@ function Exhibitions() {
     getExhibitions()
   }, [])
 
-  return <h1>Exhibitions</h1>
+  return (
+    <>
+      <List exhibitions={exhibitions} />
+      <Switch>
+        <Route path="/exhibitions/:exhibitionId">
+          <View />
+        </Route>
+      </Switch>
+    </>
+  )
 }
 
 export default Exhibitions
