@@ -1,12 +1,13 @@
 import "./styles/reset.css"
 import "./styles/index.css"
 import { Route, Switch } from "react-router-dom"
+import Exhibitions from "./pages/Exhibitions"
 
 function App() {
   return (
     <Switch>
       <Route path="/exhibitions">
-        <h1>Exhibitions</h1>
+        <Exhibitions />
       </Route>
       <Route path="/">
         <h1>Home</h1>
