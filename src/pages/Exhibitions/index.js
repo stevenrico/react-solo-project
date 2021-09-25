@@ -26,7 +26,10 @@ function Exhibitions() {
       <List exhibitions={exhibitions} />
       <Switch>
         <Route path="/exhibitions/create">
-          <CreateForm />
+          <CreateForm
+            exhibitions={exhibitions}
+            setExhibitions={setExhibitions}
+          />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
           <View />

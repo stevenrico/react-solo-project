@@ -1,6 +1,8 @@
 import { useState } from "react"
 
-function CreateForm() {
+function CreateForm(props) {
+  const { exhibitions, setExhibitions } = props
+
   const [exhibitionData, setExhibitionData] = useState({
     name: "",
     description: "",
@@ -19,11 +21,11 @@ function CreateForm() {
     endTime: "",
   })
 
-  console.log("Exhibitions Create Form State: ", {
-    exhibitionData,
-    locationData,
-    datesData,
-  })
+  // console.log("Exhibitions Create Form State: ", {
+  //   exhibitionData,
+  //   locationData,
+  //   datesData,
+  // })
 
   const handleChange = event => {
     const input = event.target
@@ -50,12 +52,43 @@ function CreateForm() {
     }
   }
 
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    const exhibitionToCreate = {
+      ...exhibitionData,
+      paintings: [],
+      location: {
+        ...locationData,
+      },
+      dates: {
+        ...datesData,
+      },
+    }
+
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(exhibitionToCreate),
+    }
+
+    // console.log("Inside handleSubmit: ", { exhibitionToCreate })
+
+    const res = await fetch("http://localhost:3030/exhibitions", fetchOptions)
+
+    const createdExhibition = await res.json()
+
+    setExhibitions([...exhibitions, createdExhibition])
+  }
+
   const { name, description } = exhibitionData
   const { address, city, postCode } = locationData
   const { startDate, endDate, startTime, endTime } = datesData
 
   return (
-    <form className="form-stack pad-md">
+    <form className="form-stack pad-md" onSubmit={handleSubmit}>
       <h1>Create an Exhibition</h1>
       <label htmlFor="name">Exhibtion Name</label>
       <input
@@ -140,6 +173,7 @@ function CreateForm() {
         onChange={handleChange}
         value={endTime}
       />
+      <button type="submit">Create Exhibition</button>
     </form>
   )
 }
