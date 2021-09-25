@@ -4,9 +4,9 @@ function List(props) {
   const { exhibitions } = props
 
   return (
-    <aside>
+    <aside className="pad-md">
       <h2>Exhibitions</h2>
-      <ul>
+      <ul className="data-list with-borders with-item-borders">
         {exhibitions &&
           exhibitions.map((exhibition, index) => {
             const { address, city } = exhibition.location

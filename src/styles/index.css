@@ -1,0 +1,55 @@
+#root {
+  min-height: 100vh;
+}
+
+/* UTILITIES */
+
+.pad-sm {
+  padding: 0.5rem;
+}
+
+.pad-md {
+  padding: 1rem;
+}
+
+/* CSS GRID LAYOUTS */
+
+.two-column-grid__expand-two {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.two-column-grid__auto {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.gap-sm {
+  gap: 0.5rem;
+}
+
+.gap-md {
+  gap: 1rem;
+}
+
+/* LISTS */
+
+.data-list {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.data-list.with-borders {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.data-list li {
+  padding: 0.5rem 0;
+}
+
+.data-list.with-item-borders li + li {
+  border-top: 1px solid #000;
+}
