@@ -34,7 +34,7 @@ function View() {
 
       getOneExhibition()
     }
-  }, [])
+  }, [location, exhibitionId])
 
   if (!exhibition) return <p>Loading...</p>
 
