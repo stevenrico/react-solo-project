@@ -98,7 +98,7 @@ textarea {
 }
 
 .form-stack label,
-.form-stack input,
+.form-stack input:not(input[type="radio"]):not(input[type="checkbox"]),
 .form-stack textarea,
 .form-stack select {
   width: 100%;
@@ -112,8 +112,19 @@ textarea {
   font-weight: bold;
 }
 
+.form-stack input[type="radio"] + label,
+.form-stack input[type="checkbox"] + label {
+  width: auto;
+  margin-left: 0.5rem;
+
+  display: inline-block;
+
+  font-weight: normal;
+}
+
 .form-stack h1,
 .form-stack h2,
+.form-stack > section,
 .form-stack > div.section {
   margin-bottom: 0.5rem;
 }
