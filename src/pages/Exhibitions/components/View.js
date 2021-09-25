@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLocation, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 
 function View() {
   const [exhibition, setExhibition] = useState(null)
@@ -48,6 +48,11 @@ function View() {
   const startTimeDisplay = startTime.substring(0, 5)
   const endTimeDisplay = endTime.substring(0, 5)
 
+  const editLocation = {
+    pathname: `/exhibitions/${exhibition.id}/edit`,
+    state: { exhibition },
+  }
+
   return (
     <main className="pad-md">
       <h1>{name}</h1>
@@ -74,6 +79,14 @@ function View() {
           <p>{endTimeDisplay}</p>
         </section>
       </div>
+      <section>
+        <h2>Actions</h2>
+        <ul>
+          <li>
+            <Link to={editLocation}>Edit</Link>
+          </li>
+        </ul>
+      </section>
     </main>
   )
 }
