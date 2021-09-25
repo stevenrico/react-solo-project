@@ -48,7 +48,12 @@ function BookTickets() {
 
   return (
     <main className="pad-md">
-      {exhibition && <ExhibitionDetails exhibition={exhibition} />}
+      {exhibition && (
+        <ExhibitionDetails
+          exhibition={exhibition}
+          hide={{ address: true, times: true }}
+        />
+      )}
       <h2>Book Tickets</h2>
       <CreateTicket exhibition={exhibition} />
     </main>

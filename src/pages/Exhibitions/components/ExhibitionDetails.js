@@ -1,5 +1,5 @@
 function ExhibitionDetails(props) {
-  const { exhibition } = props
+  const { exhibition, hide } = props
 
   const { name, description, location, dates } = exhibition
 
@@ -11,34 +11,65 @@ function ExhibitionDetails(props) {
   const startTimeDisplay = startTime.substring(0, 5)
   const endTimeDisplay = endTime.substring(0, 5)
 
+  let show = {
+    address: true,
+    dates: true,
+    times: true,
+  }
+
+  if (hide) {
+    for (const key in hide) {
+      show = {
+        ...show,
+        [key]: !hide[key],
+      }
+    }
+  }
+
   return (
     <>
       <section>
         <h1>{name}</h1>
         <p>{description}</p>
       </section>
-      <section>
-        <h2>Address</h2>
-        <p>{address}</p>
-        <p>{city}</p>
-        <p>{postCode}</p>
-      </section>
-      <div className="two-column-grid__auto">
+      {show.address && (
+        <section>
+          <h2>Address</h2>
+          <p>{address}</p>
+          <p>{city}</p>
+          <p>{postCode}</p>
+        </section>
+      )}
+      {show.dates && (
         <section>
           <h2>Dates</h2>
-          <h3>From:</h3>
-          <p>{startDateDisplay}</p>
-          <h3>To:</h3>
-          <p>{endDateDisplay}</p>
+          <div className="two-column-grid__auto">
+            <div>
+              <h3>From:</h3>
+              <p>{startDateDisplay}</p>
+            </div>
+            <div>
+              <h3>To:</h3>
+              <p>{endDateDisplay}</p>
+            </div>
+          </div>
         </section>
+      )}
+      {show.times && (
         <section>
           <h2>Opening Times</h2>
-          <h3>From:</h3>
-          <p>{startTimeDisplay}</p>
-          <h3>To:</h3>
-          <p>{endTimeDisplay}</p>
+          <div className="two-column-grid__auto">
+            <div>
+              <h3>From:</h3>
+              <p>{startTimeDisplay}</p>
+            </div>
+            <div>
+              <h3>To:</h3>
+              <p>{endTimeDisplay}</p>
+            </div>
+          </div>
         </section>
-      </div>
+      )}
     </>
   )
 }
