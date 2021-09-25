@@ -54,9 +54,11 @@ function View() {
   }
 
   return (
-    <main className="pad-md">
-      <h1>{name}</h1>
-      <p>{description}</p>
+    <main className="exhibition-view pad-md">
+      <section>
+        <h1>{name}</h1>
+        <p>{description}</p>
+      </section>
       <section>
         <h2>Address</h2>
         <p>{address}</p>
@@ -80,7 +82,7 @@ function View() {
         </section>
       </div>
       <section>
-        <h2>Actions</h2>
+        <h2 className="visually-hidden">Actions</h2>
         <ul className="nav-list grid-auto__column justify-content:start gap-sm">
           <li>
             <Link className="button outlined blue" to={editLocation}>

@@ -5,6 +5,8 @@ import EditForm from "./components/EditForm"
 import List from "./components/List"
 import View from "./components/View"
 
+import "./styles/index.css"
+
 function Exhibitions() {
   const [exhibitions, setExhibitions] = useState(null)
 
