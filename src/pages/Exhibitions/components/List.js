@@ -27,7 +27,9 @@ function List(props) {
                 <p>
                   {address}, {city}
                 </p>
-                <Link to={viewLocation}>View</Link>
+                <Link className="button outlined blue" to={viewLocation}>
+                  View
+                </Link>
               </li>
             )
           })}

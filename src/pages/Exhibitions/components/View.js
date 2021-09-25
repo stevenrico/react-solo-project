@@ -83,7 +83,12 @@ function View() {
         <h2>Actions</h2>
         <ul>
           <li>
-            <Link to={editLocation}>Edit</Link>
+            <Link className="button outlined blue" to={editLocation}>
+              Edit
+            </Link>
+          </li>
+          <li>
+            <button className="button outlined red">Delete</button>
           </li>
         </ul>
       </section>

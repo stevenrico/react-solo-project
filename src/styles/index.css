@@ -83,3 +83,92 @@ textarea {
 .form-stack > div.section {
   margin-bottom: 0.5rem;
 }
+
+.form-stack .button + .button {
+  margin-left: 0.5rem;
+}
+
+/* BUTTONS AND LINKS */
+
+a.button {
+  text-decoration: none;
+}
+
+/* Button Reset */
+button {
+  padding: 0;
+
+  border: none;
+  background-color: transparent;
+
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+button.button,
+a.button {
+  padding: 0.5rem 0.75rem;
+  min-width: 12ch;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.25rem;
+
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.75;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  transition: 250ms;
+}
+
+button.button.contained,
+a.button.contained {
+  border: 1px solid var(--color-400);
+  background-color: var(--color-400);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 2px 5px rgba(0, 0, 0, 0.12);
+
+  color: var(--color-100);
+}
+
+button.button.contained:hover,
+a.button.contained:hover {
+  border: 1px solid var(--color-500);
+  background-color: var(--color-500);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
+}
+
+button.button.outlined,
+a.button.outlined {
+  border: 1px solid var(--color-400);
+  background-color: var(--color-100);
+
+  color: var(--color-400);
+}
+
+button.button.outlined:hover,
+a.button.outlined:hover {
+  border: 1px solid var(--color-500);
+  background-color: var(--color-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+button.button.blue,
+a.button.blue {
+  --color-500: #1565c0;
+  --color-400: #1976d2;
+  --color-200: #e3f2fd;
+  --color-100: #ffffff;
+}
+
+button.button.red,
+a.button.red {
+  --color-500: #c62828;
+  --color-400: #d32f2f;
+  --color-200: #ffebee;
+  --color-100: #ffffff;
+}

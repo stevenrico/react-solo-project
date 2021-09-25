@@ -195,7 +195,9 @@ function CreateForm(props) {
           />
         </div>
       </div>
-      <button type="submit">Create Exhibition</button>
+      <button className="button contained blue" type="submit">
+        Create Exhibition
+      </button>
     </form>
   )
 }

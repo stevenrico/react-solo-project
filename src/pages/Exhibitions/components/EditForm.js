@@ -266,8 +266,12 @@ function EditForm(props) {
           />
         </div>
       </div>
-      <button type="submit">Update Exhibition</button>
-      <Link to={cancelLocation}>Cancel</Link>
+      <button className="button contained blue" type="submit">
+        Update Exhibition
+      </button>
+      <Link className="button outlined red" to={cancelLocation}>
+        Cancel
+      </Link>
     </form>
   )
 }
