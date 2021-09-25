@@ -90,8 +90,6 @@ function CreateForm(props) {
   const today = new Date().toISOString()
   const todayDateOnly = today.split("T")[0]
 
-  console.log(todayDateOnly)
-
   return (
     <form className="form-stack pad-md" onSubmit={handleSubmit}>
       <h1>Create an Exhibition</h1>

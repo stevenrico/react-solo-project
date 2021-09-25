@@ -17,7 +17,7 @@ function View() {
       setExhibition(exhibition)
     } else {
       // When a user
-      // - is on the a route with "/exhibition/1"
+      // - is on the route "/exhibition/1"
       // - AND does a browser refresh
       // - fetch the exhibition from the server
       // - AND update state

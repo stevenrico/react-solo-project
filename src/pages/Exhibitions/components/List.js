@@ -16,7 +16,7 @@ function List(props) {
           exhibitions.map((exhibition, index) => {
             const { address, city } = exhibition.location
 
-            const destination = {
+            const viewLocation = {
               pathname: `/exhibitions/${exhibition.id}`,
               state: { exhibition },
             }
@@ -27,7 +27,7 @@ function List(props) {
                 <p>
                   {address}, {city}
                 </p>
-                <Link to={destination}>View</Link>
+                <Link to={viewLocation}>View</Link>
               </li>
             )
           })}
