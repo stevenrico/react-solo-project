@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useHistory, useLocation, useParams } from "react-router"
 import ExhibitionDetails from "../../../Exhibitions/components/ExhibitionDetails"
+import CreateTicket from "../../components/TicketForm/CreateTicket"
 
 function BookTickets() {
   const [exhibition, setExhibition] = useState(null)
@@ -49,6 +50,7 @@ function BookTickets() {
     <main className="pad-md">
       {exhibition && <ExhibitionDetails exhibition={exhibition} />}
       <h2>Book Tickets</h2>
+      <CreateTicket exhibition={exhibition} />
     </main>
   )
 }
