@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useParams } from "react-router-dom"
+import { Link, useHistory, useLocation, useParams } from "react-router-dom"
 
-function ViewExhibition() {
+function ViewExhibition(props) {
+  const { exhibitions, setExhibitions } = props
+
   const [exhibition, setExhibition] = useState(null)
 
   const { exhibitionId } = useParams()
 
   const location = useLocation()
+
+  const history = useHistory()
 
   console.log("Inside View: ", { exhibitionId, exhibition, location })
 
@@ -23,18 +27,47 @@ function ViewExhibition() {
       // - AND update state
 
       const getOneExhibition = async () => {
-        const res = await fetch(
-          `http://localhost:3030/exhibitions/${exhibitionId}`
-        )
+        try {
+          const res = await fetch(
+            `http://localhost:3030/exhibitions/${exhibitionId}`
+          )
 
-        const exhibition = await res.json()
+          if (!res.ok) throw Error(`ERROR [${res.status}] ${res.statusText}`)
 
-        setExhibition(exhibition)
+          const exhibition = await res.json()
+
+          setExhibition(exhibition)
+        } catch (error) {
+          console.error({ error, redirect: "/exhibitions" })
+
+          history.push("/exhibitions")
+        }
       }
 
       getOneExhibition()
     }
   }, [location, exhibitionId])
+
+  const deleteById = async id => {
+    const fetchOptions = {
+      method: "DELETE",
+    }
+
+    const res = await fetch(
+      `http://localhost:3030/exhibitions/${id}`,
+      fetchOptions
+    )
+
+    if (res.ok) {
+      const updatedExhibitions = exhibitions.filter(
+        exhibition => exhibition.id !== id
+      )
+
+      setExhibitions(updatedExhibitions)
+
+      history.push("/exhibitions")
+    }
+  }
 
   if (!exhibition) return <p>Loading...</p>
 
@@ -90,7 +123,12 @@ function ViewExhibition() {
             </Link>
           </li>
           <li>
-            <button className="button outlined red">Delete</button>
+            <button
+              className="button outlined red"
+              onClick={() => deleteById(exhibition.id)}
+            >
+              Delete
+            </button>
           </li>
         </ul>
       </section>

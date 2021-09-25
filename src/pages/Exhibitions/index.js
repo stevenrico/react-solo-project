@@ -41,7 +41,10 @@ function Exhibitions() {
           />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
-          <ViewExhibition />
+          <ViewExhibition
+            exhibitions={exhibitions}
+            setExhibitions={setExhibitions}
+          />
         </Route>
       </Switch>
     </>
