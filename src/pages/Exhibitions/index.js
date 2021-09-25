@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
-import CreateForm from "./components/CreateForm"
-import EditForm from "./components/EditForm"
 import List from "./components/List"
 import View from "./components/View"
+import CreateExhibition from "./pages/CreateExhibition"
+import EditExhibition from "./pages/EditExhibition"
 
 import "./styles/index.css"
 
@@ -29,13 +29,16 @@ function Exhibitions() {
       <List exhibitions={exhibitions} />
       <Switch>
         <Route path="/exhibitions/create">
-          <CreateForm
+          <CreateExhibition
             exhibitions={exhibitions}
             setExhibitions={setExhibitions}
           />
         </Route>
         <Route path="/exhibitions/:exhibitionId/edit">
-          <EditForm exhibitions={exhibitions} setExhibitions={setExhibitions} />
+          <EditExhibition
+            exhibitions={exhibitions}
+            setExhibitions={setExhibitions}
+          />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
           <View />
