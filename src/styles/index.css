@@ -99,7 +99,8 @@ textarea {
 
 .form-stack label,
 .form-stack input,
-.form-stack textarea {
+.form-stack textarea,
+.form-stack select {
   width: 100%;
 
   display: block;
