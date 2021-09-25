@@ -11,13 +11,18 @@ function List(props) {
           exhibitions.map((exhibition, index) => {
             const { address, city } = exhibition.location
 
+            const destination = {
+              pathname: `/exhibitions/${exhibition.id}`,
+              state: { exhibition },
+            }
+
             return (
               <li key={index}>
                 <h3>{exhibition.name}</h3>
                 <p>
                   {address}, {city}
                 </p>
-                <Link to={`/exhibitions/${exhibition.id}`}>View</Link>
+                <Link to={destination}>View</Link>
               </li>
             )
           })}
