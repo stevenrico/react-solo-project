@@ -2,7 +2,7 @@
   "exhibitions": [
     {
       "id": 1,
-      "name": "Japanese History",
+      "name": "Japanese Modern Art",
       "description": "Discover Japanese art...",
       "paintings": [45734],
       "location": {
@@ -11,10 +11,27 @@
         "postCode": "WC2N 5DN"
       },
       "dates": {
-        "startDate": "2021-12-01",
-        "endDate": "2021-12-14",
+        "startDate": "2021-11-28",
+        "endDate": "2021-12-19",
         "startTime": "08:00",
         "endTime": "19:00"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Van Gogh Early Works",
+      "description": "Discover Van Gogh...",
+      "paintings": [437133],
+      "location": {
+        "address": "Museumstraat 1",
+        "city": "Amsterdam",
+        "postCode": "1071 XX"
+      },
+      "dates": {
+        "startDate": "2022-01-02",
+        "endDate": "2022-01-16",
+        "startTime": "12:00",
+        "endTime": "17:00"
       }
     }
   ],
