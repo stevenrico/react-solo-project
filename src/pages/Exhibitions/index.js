@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import List from "./components/List"
-import View from "./components/View"
 import CreateExhibition from "./pages/CreateExhibition"
 import EditExhibition from "./pages/EditExhibition"
+import ViewExhibition from "./pages/ViewExhibition"
 
 import "./styles/index.css"
 
@@ -41,7 +41,7 @@ function Exhibitions() {
           />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
-          <View />
+          <ViewExhibition />
         </Route>
       </Switch>
     </>

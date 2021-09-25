@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
 
-function View() {
+function ViewExhibition() {
   const [exhibition, setExhibition] = useState(null)
 
   const { exhibitionId } = useParams()
@@ -98,4 +98,4 @@ function View() {
   )
 }
 
-export default View
+export default ViewExhibition
