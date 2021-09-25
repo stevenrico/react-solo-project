@@ -8,7 +8,7 @@ function View() {
 
   const location = useLocation()
 
-  console.log("Inside View: ", { exhibitionId, exhibition })
+  console.log("Inside View: ", { exhibitionId, exhibition, location })
 
   useEffect(() => {
     if (location.state) {

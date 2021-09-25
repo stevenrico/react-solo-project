@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistory, useLocation, useParams } from "react-router"
+import { Link } from "react-router-dom"
 
 function EditForm(props) {
   const { exhibitions, setExhibitions } = props
@@ -153,6 +154,13 @@ function EditForm(props) {
   const today = new Date().toISOString()
   const todayDateOnly = today.split("T")[0]
 
+  // Add state to prevent fetch request in View component
+
+  const cancelLocation = {
+    pathname: `/exhibitions/${exhibitionId}`,
+    state: { ...location.state },
+  }
+
   return (
     <form className="form-stack pad-md" onSubmit={handleSubmit}>
       <h1>Edit an Exhibition</h1>
@@ -259,6 +267,7 @@ function EditForm(props) {
         </div>
       </div>
       <button type="submit">Update Exhibition</button>
+      <Link to={cancelLocation}>Cancel</Link>
     </form>
   )
 }
