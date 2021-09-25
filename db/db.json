@@ -4,9 +4,7 @@
       "id": 1,
       "name": "Japanese Modern Art",
       "description": "Discover Japanese art...",
-      "paintings": [
-        45734
-      ],
+      "paintings": [45734],
       "location": {
         "address": "Trafalgar Square",
         "city": "London",
@@ -23,9 +21,7 @@
       "id": 2,
       "name": "Van Gogh Early Works",
       "description": "Discover Van Gogh...",
-      "paintings": [
-        437133
-      ],
+      "paintings": [437133],
       "location": {
         "address": "Museumstraat 1",
         "city": "Amsterdam",
@@ -44,7 +40,11 @@
       "id": 1,
       "firstName": "Salvador",
       "lastName": "Dali",
-      "exhibitionId": 1
+      "exhibitionId": 1,
+      "quantity": 4,
+      "date": "2021-11-30",
+      "membership": true,
+      "terms": true
     }
   ]
 }
