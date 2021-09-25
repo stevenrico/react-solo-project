@@ -6,6 +6,11 @@ function List(props) {
   return (
     <aside className="pad-md">
       <h2>Exhibitions</h2>
+      <ul>
+        <li>
+          <Link to="/exhibitions/create">Create Exhibition</Link>
+        </li>
+      </ul>
       <ul className="data-list with-borders with-item-borders">
         {exhibitions &&
           exhibitions.map((exhibition, index) => {

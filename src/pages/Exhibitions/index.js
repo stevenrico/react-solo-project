@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
+import CreateForm from "./components/CreateForm"
 import List from "./components/List"
 import View from "./components/View"
 
@@ -24,6 +25,9 @@ function Exhibitions() {
     <>
       <List exhibitions={exhibitions} />
       <Switch>
+        <Route path="/exhibitions/create">
+          <CreateForm />
+        </Route>
         <Route path="/exhibitions/:exhibitionId">
           <View />
         </Route>
