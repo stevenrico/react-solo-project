@@ -46,7 +46,7 @@ function ViewExhibition(props) {
 
       getOneExhibition()
     }
-  }, [location, exhibitionId])
+  }, [location, exhibitionId, history])
 
   const deleteById = async id => {
     const fetchOptions = {
