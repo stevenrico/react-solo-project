@@ -87,6 +87,11 @@ function CreateForm(props) {
   const { address, city, postCode } = locationData
   const { startDate, endDate, startTime, endTime } = datesData
 
+  const today = new Date().toISOString()
+  const todayDateOnly = today.split("T")[0]
+
+  console.log(todayDateOnly)
+
   return (
     <form className="form-stack pad-md" onSubmit={handleSubmit}>
       <h1>Create an Exhibition</h1>
@@ -98,6 +103,7 @@ function CreateForm(props) {
         data-category="exhibition"
         onChange={handleChange}
         value={name}
+        required
       />
       <label htmlFor="description">Description</label>
       <textarea
@@ -146,7 +152,8 @@ function CreateForm(props) {
             name="startDate"
             data-category="dates"
             onChange={handleChange}
-            value={startDate}
+            min={todayDateOnly}
+            value={startDate || todayDateOnly}
           />
         </div>
         <div>
@@ -157,7 +164,8 @@ function CreateForm(props) {
             name="endDate"
             data-category="dates"
             onChange={handleChange}
-            value={endDate}
+            min={todayDateOnly}
+            value={endDate || todayDateOnly}
           />
         </div>
       </div>
@@ -170,7 +178,9 @@ function CreateForm(props) {
             name="startTime"
             data-category="dates"
             onChange={handleChange}
-            value={startTime}
+            min="06:00"
+            max="20:00"
+            value={startTime || "06:00"}
           />
         </div>
         <div>
@@ -181,7 +191,9 @@ function CreateForm(props) {
             name="endTime"
             data-category="dates"
             onChange={handleChange}
-            value={endTime}
+            min="08:00"
+            max="22:00"
+            value={endTime || "22:00"}
           />
         </div>
       </div>
