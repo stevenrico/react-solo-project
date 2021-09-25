@@ -2,6 +2,10 @@
   min-height: 100vh;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 /* UTILITIES */
 
 .pad-sm {
@@ -21,7 +25,7 @@
 
 .two-column-grid__auto {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: repeat(2, auto);
 }
 
 .gap-sm {
@@ -60,9 +64,9 @@ textarea {
   resize: none;
 }
 
-.form-stack > label,
-.form-stack > input,
-.form-stack > textarea {
+.form-stack label,
+.form-stack input,
+.form-stack textarea {
   width: 100%;
 
   display: block;
@@ -70,7 +74,12 @@ textarea {
   margin-bottom: 0.5rem;
 }
 
-.form-stack > h1,
-.form-stack > h2 {
+.form-stack label {
+  font-weight: bold;
+}
+
+.form-stack h1,
+.form-stack h2,
+.form-stack > div.section {
   margin-bottom: 0.5rem;
 }

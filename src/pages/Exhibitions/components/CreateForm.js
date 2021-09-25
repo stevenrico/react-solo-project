@@ -137,42 +137,54 @@ function CreateForm(props) {
         value={postCode}
       />
       <h2>Dates & Opening Times</h2>
-      <label htmlFor="startDate">Start Date</label>
-      <input
-        type="date"
-        id="startDate"
-        name="startDate"
-        data-category="dates"
-        onChange={handleChange}
-        value={startDate}
-      />
-      <label htmlFor="endDate">End Date</label>
-      <input
-        type="date"
-        id="endDate"
-        name="endDate"
-        data-category="dates"
-        onChange={handleChange}
-        value={endDate}
-      />
-      <label htmlFor="startTime">Start Time</label>
-      <input
-        type="time"
-        id="startTime"
-        name="startTime"
-        data-category="dates"
-        onChange={handleChange}
-        value={startTime}
-      />
-      <label htmlFor="endTime">End Time</label>
-      <input
-        type="time"
-        id="endTime"
-        name="endTime"
-        data-category="dates"
-        onChange={handleChange}
-        value={endTime}
-      />
+      <div className="section two-column-grid__auto gap-md">
+        <div>
+          <label htmlFor="startDate">Start Date</label>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            data-category="dates"
+            onChange={handleChange}
+            value={startDate}
+          />
+        </div>
+        <div>
+          <label htmlFor="endDate">End Date</label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            data-category="dates"
+            onChange={handleChange}
+            value={endDate}
+          />
+        </div>
+      </div>
+      <div className="section two-column-grid__auto gap-md">
+        <div>
+          <label htmlFor="startTime">Start Time</label>
+          <input
+            type="time"
+            id="startTime"
+            name="startTime"
+            data-category="dates"
+            onChange={handleChange}
+            value={startTime}
+          />
+        </div>
+        <div>
+          <label htmlFor="endTime">End Time</label>
+          <input
+            type="time"
+            id="endTime"
+            name="endTime"
+            data-category="dates"
+            onChange={handleChange}
+            value={endTime}
+          />
+        </div>
+      </div>
       <button type="submit">Create Exhibition</button>
     </form>
   )
