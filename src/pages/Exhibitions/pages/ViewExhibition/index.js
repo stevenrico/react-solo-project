@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useHistory, useLocation, useParams } from "react-router-dom"
+import ExhibitionDetails from "../../components/ExhibitionDetails"
 
 function ViewExhibition(props) {
   const { exhibitions, setExhibitions } = props
@@ -71,15 +72,10 @@ function ViewExhibition(props) {
 
   if (!exhibition) return <p>Loading...</p>
 
-  const { name, description, location: exhibitionLocation, dates } = exhibition
-
-  const { address, city, postCode } = exhibitionLocation
-  const { startDate, endDate, startTime, endTime } = dates
-
-  const startDateDisplay = new Date(startDate).toDateString()
-  const endDateDisplay = new Date(endDate).toDateString()
-  const startTimeDisplay = startTime.substring(0, 5)
-  const endTimeDisplay = endTime.substring(0, 5)
+  const bookTicketsLocation = {
+    pathname: `/exhibitions/${exhibition.id}/book`,
+    state: { exhibition },
+  }
 
   const editLocation = {
     pathname: `/exhibitions/${exhibition.id}/edit`,
@@ -88,35 +84,15 @@ function ViewExhibition(props) {
 
   return (
     <main className="exhibition-view pad-md">
-      <section>
-        <h1>{name}</h1>
-        <p>{description}</p>
-      </section>
-      <section>
-        <h2>Address</h2>
-        <p>{address}</p>
-        <p>{city}</p>
-        <p>{postCode}</p>
-      </section>
-      <div className="two-column-grid__auto">
-        <section>
-          <h2>Dates</h2>
-          <h3>From:</h3>
-          <p>{startDateDisplay}</p>
-          <h3>To:</h3>
-          <p>{endDateDisplay}</p>
-        </section>
-        <section>
-          <h2>Opening Times</h2>
-          <h3>From:</h3>
-          <p>{startTimeDisplay}</p>
-          <h3>To:</h3>
-          <p>{endTimeDisplay}</p>
-        </section>
-      </div>
+      <ExhibitionDetails exhibition={exhibition} />
       <section>
         <h2 className="visually-hidden">Actions</h2>
         <ul className="nav-list grid-auto__column justify-content:start gap-sm">
+          <li>
+            <Link className="button contained blue" to={bookTicketsLocation}>
+              Book Tickets
+            </Link>
+          </li>
           <li>
             <Link className="button outlined blue" to={editLocation}>
               Edit

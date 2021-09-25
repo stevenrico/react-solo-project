@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import List from "./components/List"
+import BookTickets from "../Tickets/pages/BookTickets"
 import CreateExhibition from "./pages/CreateExhibition"
 import EditExhibition from "./pages/EditExhibition"
 import ViewExhibition from "./pages/ViewExhibition"
@@ -39,6 +40,9 @@ function Exhibitions() {
             exhibitions={exhibitions}
             setExhibitions={setExhibitions}
           />
+        </Route>
+        <Route path="/exhibitions/:exhibitionId/book">
+          <BookTickets />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
           <ViewExhibition
