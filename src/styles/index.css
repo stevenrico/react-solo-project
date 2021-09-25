@@ -28,6 +28,15 @@ body {
   grid-template-columns: repeat(2, auto);
 }
 
+.grid-auto__column {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.justify-content\:start {
+  justify-content: start;
+}
+
 .gap-sm {
   gap: 0.5rem;
 }
@@ -38,6 +47,7 @@ body {
 
 /* LISTS */
 
+.nav-list,
 .data-list {
   margin: 0;
   padding: 0;

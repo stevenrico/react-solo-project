@@ -81,7 +81,7 @@ function View() {
       </div>
       <section>
         <h2>Actions</h2>
-        <ul>
+        <ul className="nav-list grid-auto__column justify-content:start gap-sm">
           <li>
             <Link className="button outlined blue" to={editLocation}>
               Edit
