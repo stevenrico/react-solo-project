@@ -53,3 +53,24 @@
 .data-list.with-item-borders li + li {
   border-top: 1px solid #000;
 }
+
+/* FORMS */
+
+textarea {
+  resize: none;
+}
+
+.form-stack > label,
+.form-stack > input,
+.form-stack > textarea {
+  width: 100%;
+
+  display: block;
+
+  margin-bottom: 0.5rem;
+}
+
+.form-stack > h1,
+.form-stack > h2 {
+  margin-bottom: 0.5rem;
+}

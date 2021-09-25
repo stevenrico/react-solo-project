@@ -1,6 +1,6 @@
 function CreateForm() {
   return (
-    <form className="pad-md">
+    <form className="form-stack pad-md">
       <h1>Create an Exhibition</h1>
       <label htmlFor="name">Exhibtion Name</label>
       <input type="text" id="name" name="name" />
