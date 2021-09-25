@@ -1,15 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function CreateTicket(props) {
+  const { exhibition } = props
+
   const [ticketData, setTicketData] = useState({
     firstName: "",
     lastName: "",
     quantity: "",
+    date: "",
   })
 
   const [enableCustomQuantity, setEnableCustomQuantity] = useState(false)
 
-  console.log("Ticket Create Form State: ", { ticketData })
+  console.log("Ticket Create Form State: ", { ticketData, exhibition })
+
+  useEffect(() => {
+    if (exhibition && ticketData.date === "") {
+      setTicketData({ ...ticketData, date: exhibition.dates.startDate })
+    }
+  }, [exhibition, ticketData])
 
   const handleChange = event => {
     const input = event.target
@@ -37,7 +46,9 @@ function CreateTicket(props) {
     setTicketData({ ...ticketData, ...data })
   }
 
-  const { firstName, lastName, quantity } = ticketData
+  const { firstName, lastName, quantity, date } = ticketData
+
+  const { dates: exhibitionDates } = exhibition
 
   return (
     <form className="form-stack">
@@ -99,6 +110,16 @@ function CreateTicket(props) {
         min="6"
         value={enableCustomQuantity ? quantity : ""}
         disabled={!enableCustomQuantity}
+      />
+      <label htmlFor="date">Date of Visit</label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        onChange={handleChange}
+        min={exhibitionDates.startDate}
+        max={exhibitionDates.endDate}
+        value={date}
       />
     </form>
   )

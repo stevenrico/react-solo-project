@@ -46,14 +46,14 @@ function BookTickets() {
     }
   }, [location, exhibitionId, history])
 
+  if (!exhibition) return <p>Loading...</p>
+
   return (
     <main className="pad-md">
-      {exhibition && (
-        <ExhibitionDetails
-          exhibition={exhibition}
-          hide={{ address: true, times: true }}
-        />
-      )}
+      <ExhibitionDetails
+        exhibition={exhibition}
+        hide={{ address: true, times: true }}
+      />
       <h2>Book Tickets</h2>
       <CreateTicket exhibition={exhibition} />
     </main>
