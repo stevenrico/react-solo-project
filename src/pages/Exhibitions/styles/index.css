@@ -1,3 +1,7 @@
+.exhibition-view {
+  max-width: 75ch;
+}
+
 .exhibition-view > * {
   margin-bottom: 1rem;
 }
