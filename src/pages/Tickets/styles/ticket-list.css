@@ -1,0 +1,36 @@
+.tickets-list li {
+  min-height: 96px;
+  padding: 1rem;
+
+  row-gap: 1rem;
+
+  border-radius: 0.25rem;
+  border: 2px solid #102027;
+}
+
+.tickets-list li + li {
+  margin-top: 1rem;
+}
+
+.tickets-list h3 {
+  margin: 0;
+}
+
+.membership-box {
+  min-width: 15ch;
+  padding: 0.25rem 0.75rem;
+
+  display: block;
+
+  border-radius: 0.25rem;
+  border: 2px dashed;
+  border-color: transparent;
+
+  text-align: center;
+}
+
+.membership-box.active {
+  border-color: #0277bd;
+
+  color: #0277bd;
+}
