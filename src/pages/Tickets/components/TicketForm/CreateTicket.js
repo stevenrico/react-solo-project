@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function CreateTicket(props) {
-  const { exhibition } = props
+  const { exhibition, exhibitions, setExhibitions } = props
 
   const [ticketData, setTicketData] = useState({
     firstName: "",
@@ -68,12 +68,46 @@ function CreateTicket(props) {
     setTicketData({ ...ticketData, ...data })
   }
 
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    const ticketToCreate = {
+      ...ticketData,
+      exhibitionId: exhibition.id,
+    }
+
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ticketToCreate),
+    }
+
+    const res = await fetch("http://localhost:3030/tickets", fetchOptions)
+
+    const createdTicket = await res.json()
+
+    const updatedExhibitions = exhibitions.map(exhibition => {
+      if (exhibition.id === createdTicket.exhibitionId) {
+        return {
+          ...exhibition,
+          tickets: [...exhibition.tickets, createdTicket],
+        }
+      } else {
+        return exhibition
+      }
+    })
+
+    setExhibitions(updatedExhibitions)
+  }
+
   const { firstName, lastName, quantity, date, membership, terms } = ticketData
 
   const { dates: exhibitionDates } = exhibition
 
   return (
-    <form className="form-stack">
+    <form className="form-stack" onSubmit={handleSubmit}>
       <div className="section">
         <label htmlFor="firstName">First Name</label>
         <input

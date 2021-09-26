@@ -3,7 +3,9 @@ import { useHistory, useLocation, useParams } from "react-router"
 import ExhibitionDetails from "../../../Exhibitions/components/ExhibitionDetails"
 import CreateTicket from "../../components/TicketForm/CreateTicket"
 
-function BookTickets() {
+function BookTickets(props) {
+  const { exhibitions, setExhibitions } = props
+
   const [exhibition, setExhibition] = useState(null)
 
   const { exhibitionId } = useParams()
@@ -55,7 +57,11 @@ function BookTickets() {
         hide={{ address: true, times: true }}
       />
       <h2>Book Tickets</h2>
-      <CreateTicket exhibition={exhibition} />
+      <CreateTicket
+        exhibition={exhibition}
+        exhibitions={exhibitions}
+        setExhibitions={setExhibitions}
+      />
     </main>
   )
 }

@@ -42,7 +42,10 @@ function Exhibitions() {
           />
         </Route>
         <Route path="/exhibitions/:exhibitionId/book">
-          <BookTickets />
+          <BookTickets
+            exhibitions={exhibitions}
+            setExhibitions={setExhibitions}
+          />
         </Route>
         <Route path="/exhibitions/:exhibitionId">
           <ViewExhibition
