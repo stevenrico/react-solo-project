@@ -18,7 +18,7 @@ function List(props) {
 
 function EmptyTicketItem() {
   return (
-    <li className="grid_center">
+    <li className="grid_center shadow-sm">
       <h3>No booked tickets.</h3>
     </li>
   )
