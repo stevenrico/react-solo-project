@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 const initialTicketData = {
   firstName: "",
@@ -18,6 +18,8 @@ function CreateTicket(props) {
   const [customQuantity, setCustomQuantity] = useState("")
 
   console.log("Ticket Create Form State: ", { ticketData, customQuantity })
+
+  const history = useHistory()
 
   useEffect(() => {
     if (exhibition && ticketData.date === "") {
@@ -112,11 +114,17 @@ function CreateTicket(props) {
 
     const createdTicket = await res.json()
 
+    let updatedExhibition = null
+
     const updatedExhibitions = exhibitions.map(exhibition => {
       if (exhibition.id === createdTicket.exhibitionId) {
-        return {
+        updatedExhibition = {
           ...exhibition,
           tickets: [...exhibition.tickets, createdTicket],
+        }
+
+        return {
+          ...updatedExhibition,
         }
       } else {
         return exhibition
@@ -126,6 +134,16 @@ function CreateTicket(props) {
     setExhibitions(updatedExhibitions)
     setTicketData({ ...initialTicketData })
     setCustomQuantity("")
+
+    // When a user
+    // - submits a form
+    // - AND is sent to "/exhibition/1"
+    // - add updated exhibition to location.state via history
+    // - IN ORDER TO prevent an unnecessary fetch request
+
+    history.push(`/exhibitions/${exhibition.id}`, {
+      exhibition: updatedExhibition,
+    })
   }
 
   const { firstName, lastName, quantity, date, membership, terms } = ticketData
