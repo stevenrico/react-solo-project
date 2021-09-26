@@ -13,7 +13,7 @@ function CreateTicket(props) {
     terms: false,
   })
 
-  const [enableCustomQuantity, setEnableCustomQuantity] = useState(false)
+  const [customQuantityEnabled, setCustomQuantityEnabled] = useState(false)
 
   console.log("Ticket Create Form State: ", { ticketData, exhibition })
 
@@ -43,13 +43,14 @@ function CreateTicket(props) {
 
     if (name === "quantity") {
       if (value === "custom") {
-        setEnableCustomQuantity(true)
+        setCustomQuantityEnabled(true)
         setTicketData({ ...ticketData, quantity: "" })
 
         return
       }
 
-      if (value !== "" && typeof value === "string") {
+      if (value !== "" && typeof value === "string" && parseInt(value) < 6) {
+        setCustomQuantityEnabled(false)
         setTicketData({ ...ticketData, quantity: parseInt(value) })
 
         return
@@ -97,7 +98,7 @@ function CreateTicket(props) {
           id="quatity"
           name="quantity"
           onChange={handleChange}
-          value={quantity > 5 || enableCustomQuantity ? "custom" : quantity}
+          value={quantity > 5 || customQuantityEnabled ? "custom" : quantity}
         >
           <option value="">Please select...</option>
           {[1, 2, 3, 4, 5, "custom"].map((quantityOption, index) => {
@@ -130,8 +131,8 @@ function CreateTicket(props) {
           name="quantity"
           onChange={handleChange}
           min="6"
-          value={enableCustomQuantity ? quantity : ""}
-          disabled={!enableCustomQuantity}
+          value={customQuantityEnabled ? quantity : ""}
+          disabled={!customQuantityEnabled}
         />
         <label htmlFor="date">Date of Visit</label>
         <input
