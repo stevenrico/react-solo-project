@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
+const initialTicketData = {
+  firstName: "",
+  lastName: "",
+  quantity: "",
+  date: "",
+  membership: false,
+  terms: false,
+}
+
 function CreateTicket(props) {
   const { exhibition, exhibitions, setExhibitions } = props
 
-  const [ticketData, setTicketData] = useState({
-    firstName: "",
-    lastName: "",
-    quantity: "",
-    date: "",
-    membership: false,
-    terms: false,
-  })
+  const [ticketData, setTicketData] = useState({ ...initialTicketData })
 
-  const [customQuantityEnabled, setCustomQuantityEnabled] = useState(false)
+  const [customQuantity, setCustomQuantity] = useState("")
 
-  console.log("Ticket Create Form State: ", { ticketData, exhibition })
+  console.log("Ticket Create Form State: ", { ticketData, customQuantity })
 
   useEffect(() => {
     if (exhibition && ticketData.date === "") {
@@ -43,18 +45,27 @@ function CreateTicket(props) {
 
     if (name === "quantity") {
       if (value === "custom") {
-        setCustomQuantityEnabled(true)
-        setTicketData({ ...ticketData, quantity: "" })
+        setTicketData({ ...ticketData, quantity: "custom" })
 
         return
       }
 
-      if (value !== "" && typeof value === "string" && parseInt(value) < 6) {
-        setCustomQuantityEnabled(false)
-        setTicketData({ ...ticketData, quantity: parseInt(value) })
+      setTicketData({ ...ticketData, quantity: parseInt(value) })
+      setCustomQuantity("")
+
+      return
+    }
+
+    if (name === "customQuantity") {
+      if (value !== "") {
+        setCustomQuantity(parseInt(value))
 
         return
       }
+
+      setCustomQuantity("")
+
+      return
     }
 
     if (name === "membership") {
@@ -71,8 +82,21 @@ function CreateTicket(props) {
   const handleSubmit = async event => {
     event.preventDefault()
 
-    const ticketToCreate = {
-      ...ticketData,
+    let ticketToCreate = null
+
+    if (ticketData.quantity === "custom") {
+      ticketToCreate = {
+        ...ticketData,
+        quantity: customQuantity,
+      }
+    } else {
+      ticketToCreate = {
+        ...ticketData,
+      }
+    }
+
+    ticketToCreate = {
+      ...ticketToCreate,
       exhibitionId: exhibition.id,
     }
 
@@ -100,6 +124,8 @@ function CreateTicket(props) {
     })
 
     setExhibitions(updatedExhibitions)
+    setTicketData({ ...initialTicketData })
+    setCustomQuantity("")
   }
 
   const { firstName, lastName, quantity, date, membership, terms } = ticketData
@@ -132,7 +158,7 @@ function CreateTicket(props) {
           id="quatity"
           name="quantity"
           onChange={handleChange}
-          value={quantity > 5 || customQuantityEnabled ? "custom" : quantity}
+          value={customQuantity ? "custom" : quantity}
         >
           <option value="">Please select...</option>
           {[1, 2, 3, 4, 5, "custom"].map((quantityOption, index) => {
@@ -162,11 +188,11 @@ function CreateTicket(props) {
         <input
           type="number"
           id="customQuantity"
-          name="quantity"
+          name="customQuantity"
           onChange={handleChange}
           min="6"
-          value={customQuantityEnabled ? quantity : ""}
-          disabled={!customQuantityEnabled}
+          value={customQuantity}
+          disabled={quantity !== "custom"}
         />
         <label htmlFor="date">Date of Visit</label>
         <input
