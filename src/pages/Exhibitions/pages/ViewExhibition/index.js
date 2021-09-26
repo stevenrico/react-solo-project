@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useHistory, useLocation, useParams } from "react-router-dom"
+import List from "../../../Tickets/components/List"
 import ExhibitionDetails from "../../components/ExhibitionDetails"
 
 function ViewExhibition(props) {
@@ -107,6 +108,10 @@ function ViewExhibition(props) {
             </button>
           </li>
         </ul>
+      </section>
+      <section>
+        <h2>Booked Tickets</h2>
+        <List tickets={exhibition.tickets} />
       </section>
     </main>
   )
